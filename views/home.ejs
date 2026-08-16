@@ -1,0 +1,18 @@
+<%- include('partials/header', { title: 'Web Trgovina - ' + website, label: 'KATEGORIJE', categories: categories }) %>
+
+<main class="main-content">
+    <div class="hero">
+        <div class="hero-text">
+            <p>Dobrodošli u našu web trgovinu - najbolji izbor svježe hrane!</p>
+        </div>
+        <div class="hero-image">
+            <img src="/images/hero.jpg" alt="Web trgovina hrana">
+        </div>
+    </div>
+    <div class="products-box">
+        <h2 id="productsTitle">Proizvodi</h2>
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+</main>
+
+<%- include('partials/footer', { pageScript: 'home.js' }) %>

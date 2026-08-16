@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'Košarica', label: 'KOŠARICA', categories: categories }) %>
+
+<main class="main-content cart-page">
+    <div class="cart-box">
+        <h2>Vaša košarica</h2>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>NAZIV PROIZVODA</th>
+                    <th>CIJENA</th>
+                    <th>KOLIČINA</th>
+                    <th>UKUPNO</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems"></tbody>
+            <tfoot>
+                <tr id="cartTotalRow" class="hidden">
+                    <td colspan="3" class="cart-total-label">Ukupno za platiti</td>
+                    <td class="cart-total-value"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div id="cartEmpty" class="hidden text-center p-40">
+            <p>Vaša košarica je prazna.</p>
+            <a href="/" class="btn">Nastavite s kupovinom</a>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer', { pageScript: 'cart.js' }) %>

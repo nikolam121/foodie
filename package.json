@@ -1,0 +1,18 @@
+{
+  "name": "foodie-namirnice",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ecommerce", "groceries", "express", "ejs"],
+  "author": "Nikola Mihanović",
+  "license": "ISC",
+  "description": "FOODIE - online grocery store with categories, product browsing and a session-based shopping cart.",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}
