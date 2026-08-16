@@ -1,45 +1,45 @@
 # FOODIE
 
-Online trgovina namirnicama: pregled proizvoda po kategorijama, dodavanje u košaricu i pregled ukupnog iznosa za plaćanje. Radi bez prijave, korpa se čuva po sesiji preglednika.
+An online grocery store: browse products by category, add them to a cart, and see the total amount due. Works without logging in, the cart is kept per browser session.
 
-## Tehnologije
+## Tech stack
 
-| Sloj | Tehnologija |
+| Layer | Technology |
 | --- | --- |
 | Server | Node.js, Express 5 |
-| Predlošci | EJS |
-| Sesija | express-session |
+| Templates | EJS |
+| Session | express-session |
 
-## Pokretanje
+## Running
 
 ```bash
 npm install
 npm start
 ```
 
-Aplikacija se diže na `http://localhost:3000`.
+The app starts at `http://localhost:3000`.
 
-## Struktura
+## Structure
 
 ```
-server.js              Ulazna točka, postavlja EJS, statiku i sesiju
-routes/home.routes.js   Dohvat kategorija i proizvoda
-routes/cart.routes.js   Dodavanje, uklanjanje i pregled košarice
-data/mydata.js          Katalog proizvoda (10 kategorija, 50 proizvoda, cijene u EUR)
-views/                  EJS predlošci (naslovnica, košarica, header/footer djelići)
-public/                 Statički resursi: stilovi, klijentski JS, slike proizvoda
+server.js               Entry point, sets up EJS, static files, and sessions
+routes/home.routes.js    Fetches categories and products
+routes/cart.routes.js    Adds, removes, and lists cart items
+data/mydata.js           Product catalog (10 categories, 50 products, prices in EUR)
+views/                   EJS templates (home page, cart, header/footer partials)
+public/                  Static assets: styles, client-side JS, product images
 ```
 
 ## API
 
-| Metoda | Putanja | Opis |
+| Method | Path | Description |
 | --- | --- | --- |
-| `GET` | `/home/getCategories` | sve kategorije |
-| `GET` | `/home/getProducts/:id` | proizvodi za kategoriju, uklj. cijenu |
-| `POST` | `/cart/add/:id` | dodaje proizvod u košaricu |
-| `POST` | `/cart/remove/:id` | smanjuje količinu za jedan |
-| `GET` | `/cart/getAll` | stavke u košarici, cijena po retku i ukupan iznos |
+| `GET` | `/home/getCategories` | all categories |
+| `GET` | `/home/getProducts/:id` | products for a category, including price |
+| `POST` | `/cart/add/:id` | adds a product to the cart |
+| `POST` | `/cart/remove/:id` | decreases quantity by one |
+| `GET` | `/cart/getAll` | cart items, per-line price, and total |
 
-Akcije koje mijenjaju stanje košarice idu preko `POST`, ne `GET`, tako da se ne mogu slučajno pokrenuti prefetchom u pregledniku.
+Actions that change cart state go through `POST`, not `GET`, so they can't be triggered accidentally by browser prefetching.
 
-Ako sesija referencira proizvod koji više ne postoji u katalogu, `/cart/getAll` ga tiho ukloni iz košarice umjesto da vrati grešku.
+If a session references a product that no longer exists in the catalog, `/cart/getAll` silently drops it from the cart instead of returning an error.
