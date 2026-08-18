@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: 'tajni-kljuc-za-lab2',
+    secret: 'foodie-dev-session-secret',
     resave: false,
     saveUninitialized: true
 }));
@@ -27,5 +27,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server radi na http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}`);
 });

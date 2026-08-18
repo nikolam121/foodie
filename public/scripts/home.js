@@ -21,7 +21,7 @@ async function loadProducts(categoryId, categoryName) {
     const res = await fetch('/home/getProducts/' + categoryId);
     const products = await res.json();
 
-    document.getElementById('productsTitle').textContent = 'Proizvodi - ' + categoryName;
+    document.getElementById('productsTitle').textContent = 'Products - ' + categoryName;
     const label = document.getElementById('currentCategory');
     if (label) label.textContent = categoryName.toUpperCase();
 
@@ -44,7 +44,7 @@ async function loadProducts(categoryId, categoryName) {
         overlay.className = 'add-overlay';
         const addBtn = document.createElement('button');
         addBtn.className = 'add-btn';
-        addBtn.textContent = 'Dodaj';
+        addBtn.textContent = 'Add';
         addBtn.addEventListener('click', () => addToCart(product.id, product.name));
         overlay.appendChild(addBtn);
 
@@ -73,5 +73,5 @@ async function loadProducts(categoryId, categoryName) {
 async function addToCart(id, name) {
     await fetch('/cart/add/' + id, { method: 'POST' });
     updateCartCount();
-    showToast(name + ' dodano u košaricu!');
+    showToast(name + ' added to cart!');
 }

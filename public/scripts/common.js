@@ -1,5 +1,5 @@
 function formatPrice(value) {
-    return value.toFixed(2).replace('.', ',') + ' €';
+    return '€' + value.toFixed(2);
 }
 
 async function updateCartCount() {

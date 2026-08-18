@@ -13,7 +13,7 @@ router.get('/getProducts/:id', function (req, res) {
     if (category) {
         res.json(category.products);
     } else {
-        res.status(404).send('Kategorija ne postoji');
+        res.status(404).send('Category not found');
     }
 });
 

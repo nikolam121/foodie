@@ -1,28 +1,28 @@
-<%- include('partials/header', { title: 'Košarica', label: 'KOŠARICA', categories: categories }) %>
+<%- include('partials/header', { title: 'Cart', label: 'CART', categories: categories }) %>
 
 <main class="main-content cart-page">
     <div class="cart-box">
-        <h2>Vaša košarica</h2>
+        <h2>Your Cart</h2>
         <table id="cartTable">
             <thead>
                 <tr>
-                    <th>NAZIV PROIZVODA</th>
-                    <th>CIJENA</th>
-                    <th>KOLIČINA</th>
-                    <th>UKUPNO</th>
+                    <th>PRODUCT NAME</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL</th>
                 </tr>
             </thead>
             <tbody id="cartItems"></tbody>
             <tfoot>
                 <tr id="cartTotalRow" class="hidden">
-                    <td colspan="3" class="cart-total-label">Ukupno za platiti</td>
+                    <td colspan="3" class="cart-total-label">Total due</td>
                     <td class="cart-total-value"></td>
                 </tr>
             </tfoot>
         </table>
         <div id="cartEmpty" class="hidden text-center p-40">
-            <p>Vaša košarica je prazna.</p>
-            <a href="/" class="btn">Nastavite s kupovinom</a>
+            <p>Your cart is empty.</p>
+            <a href="/" class="btn">Continue shopping</a>
         </div>
     </div>
 </main>

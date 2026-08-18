@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 
 router.post('/add/:id', function (req, res) {
     const id = parseInt(req.params.id);
-    if (!findProduct(id)) return res.status(404).send('Proizvod ne postoji');
+    if (!findProduct(id)) return res.status(404).send('Product not found');
 
     if (!req.session.cart) req.session.cart = {};
     req.session.cart[id] = (req.session.cart[id] || 0) + 1;
