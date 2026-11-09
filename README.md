@@ -17,6 +17,8 @@ npm install
 npm start
 ```
 
+Set `SESSION_SECRET` (and optionally `PORT`) in the environment for anything other than local development. Without it a built-in development secret is used.
+
 The app starts at `http://localhost:3000`.
 
 ## Structure
@@ -43,3 +45,11 @@ public/                  Static assets: styles, client-side JS, product images
 Actions that change cart state go through `POST`, not `GET`, so they can't be triggered accidentally by browser prefetching.
 
 If a session references a product that no longer exists in the catalog, `/cart/getAll` silently drops it from the cart instead of returning an error.
+
+## Tests
+
+```bash
+npm test
+```
+
+The tests start the app on a free port and check the cart: unknown products, quantities, line totals and removal.

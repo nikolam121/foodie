@@ -4,7 +4,7 @@ const path = require('path');
 const data = require('./data/mydata');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: 'foodie-dev-session-secret',
+    secret: process.env.SESSION_SECRET || 'foodie-dev-session-secret',
     resave: false,
     saveUninitialized: true
 }));
@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
     res.render('home', { website: data.website, categories: data.categories });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
